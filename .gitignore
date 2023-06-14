@@ -1,0 +1,10 @@
+# Ignore all the files in the virtual environment package
+venv/
+*.env
+
+# ignore compiles files
+*.pyc
+__pycache__/
+
+# ignore the interpreter
+.vscode/
