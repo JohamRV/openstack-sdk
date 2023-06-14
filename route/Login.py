@@ -1,6 +1,7 @@
 import os
 import dotenv
 from dao.keystone.AuthenticationDao import AuthenticationDao
+from MainModule import MainModule
 
 class Login:
     def __init__(self) -> None:
@@ -20,8 +21,8 @@ class Login:
 
             if res.status_code == 201:
                 print(f"\n[.] {username} is authenticate")
-                #{"accessToken": res.headers["X-Subject-Token"], "userId": res.json()["token"]["user"]["id"]}
-
+                os.system("cls")
+                MainModule.menu(res.headers["X-Subject-Token"])
                 break
             else:
                 print("\n[.] Invalid credentials. Try again.\n")
