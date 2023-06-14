@@ -1,4 +1,5 @@
 import requests
+import json
 
 class KeyPairDao:
 
@@ -12,13 +13,23 @@ class KeyPairDao:
         return response
 
     def showKeypairDetail(self, keypair_name:str):
-        url = self.url + keypair_name
+        url = self.url +"/" + keypair_name
         headers={"X-Auth-Token":self.token}
         response = requests.get(url=url, headers=headers)
         return response
     
-    def importKeypair():
-        pass
+    def createKeypair(self, keypair_name:str, public_key:str):
+        body={
+                "keypair": {
+                    "name": keypair_name,
+                    "public_key": public_key
+                }
+            }
+        response = requests.post(url=self.url, data=json.dumps(body))
+        return response
 
-    def deleteKeypair():
-        pass
+    def deleteKeypair(self, keypair_name:str):
+        url=self.url + "/" + keypair_name
+        headers={"X-Auth-Token":self.token}
+        response=requests.delete(url=url, headers=headers)
+        return response
