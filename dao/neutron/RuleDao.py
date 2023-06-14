@@ -1,10 +1,10 @@
 import requests
-class SecurityGroupDao:
+class RuleDao:
 
     def __init__(self, base_url:str) -> None:
         self.url = base_url+"/v2.0/security-group-rules"
 
-    def listSecurityGroups(self,name:str,*args, **kwargs):
+    def listSecurityGroups(self,name:str):
         headers={"X-Auth-Token":self.token}
         response=requests.get(url=self.url, headers=headers)
         return response
