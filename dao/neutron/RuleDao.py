@@ -2,9 +2,10 @@ import requests
 import json
 class RuleDao:
 
-    def __init__(self, base_url:str) -> None:
+    def __init__(self, base_url:str, token:str) -> None:
         self.url = base_url+"/v2.0/security-group-rules"
-
+        self.token = token
+        
     def listSecurityGroups(self):
         headers={"X-Auth-Token":self.token}
         response=requests.get(url=self.url, headers=headers)
