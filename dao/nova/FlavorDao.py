@@ -24,6 +24,7 @@ class FlavorDao:
                 }
             }
         response = requests.post(url=self.url, data=json.dumps(body), headers=headers)
+        return response
 
     def showFlavorDetail(self, flavor_id:str):
         url = self.url +"/" + flavor_id
