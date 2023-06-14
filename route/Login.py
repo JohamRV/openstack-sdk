@@ -1,7 +1,7 @@
 import os
 import dotenv
 from dao.keystone.AuthenticationDao import AuthenticationDao
-from MainModule import MainModule
+from route.MainModule import MainModule
 
 class Login:
     def __init__(self) -> None:

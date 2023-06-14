@@ -1,5 +1,5 @@
 from dao.nova.ServerDao import ServerDao
-from Route import Route
+from route.Route import Route
 import os
 
 NOVA_BASE_URL = os.getenv("OS_NOVA_URL")
@@ -24,7 +24,7 @@ class ServerModule:
 
             match opcion:
                 case 1:
-                    serverDao = ServerDao.menu(NOVA_BASE_URL , authToken)
+                    serverDao = ServerDao(NOVA_BASE_URL , authToken)
                     serverDao.listAllServers()
 
                 case 2: 

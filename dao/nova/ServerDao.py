@@ -29,7 +29,7 @@ class ServerDao:
         return response
     
     def showSeverDetail(self, server_id:str):
-        rl = self.url +"/" + server_id
+        url = self.url +"/" + server_id
         headers={"X-Auth-Token":self.token}
         response = requests.get(url=url, headers=headers)
         return response

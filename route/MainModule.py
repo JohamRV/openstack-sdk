@@ -1,6 +1,4 @@
-from NetworkingModule import NetworkingModule
-from ServerModule import ServerModule
-from Route import Route
+from route.Route import Route
 import sys
 
 class MainModule:
