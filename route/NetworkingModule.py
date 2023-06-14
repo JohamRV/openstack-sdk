@@ -26,7 +26,6 @@ class NetworkingModule:
             case 1:
                 networkDao = NetworkDao(NEUTRON_BASE_URL , self.authToken)
                 networkDao.listAllNetworks()
-
             case 2: 
                 pass
             case 3: 
