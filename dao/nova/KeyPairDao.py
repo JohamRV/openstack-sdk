@@ -19,13 +19,14 @@ class KeyPairDao:
         return response
     
     def createKeypair(self, keypair_name:str, public_key:str):
+        headers={"X-Auth-Token":self.token}
         body={
                 "keypair": {
                     "name": keypair_name,
                     "public_key": public_key
                 }
             }
-        response = requests.post(url=self.url, data=json.dumps(body))
+        response = requests.post(url=self.url, data=json.dumps(body), headers=headers)
         return response
 
     def deleteKeypair(self, keypair_name:str):
