@@ -1,34 +1,33 @@
 from dao.neutron.NetworkDao import NetworkDao
+from route.Route import Route
 import os
 
 NEUTRON_BASE_URL = os.getenv("OS_NEUTRON_URL")
 
 class NetworkingModule:
-    
-    def __init__(self, authToken) -> None:
-        self.authToken = authToken
-
+  
     @staticmethod
-    def menu():
-        print("\n+-----------------------------------------------------+\n"+
-                "|                Módulo de Networking                 |\n"+
-                "+-----------------------------------------------------+\n"+
-                "| 1> Listar redes                                     |\n"+
-                "| 2> Crear redes                                      |\n"+
-                "| 3> Regresar                                         |\n"+
-                "+-----------------------------------------------------+\n")
-        opcion = int(input("[.] Ingrese una opción: "))
-        
-    def handleOption(self):
-        opcion = NetworkingModule.menu()
+    def menu(authToken):
+        while True:
+            print("\n+-----------------------------------------------------+\n"+
+                    "|                Módulo de Networking                 |\n"+
+                    "+-----------------------------------------------------+\n"+
+                    "| 1> Listar redes                                     |\n"+
+                    "| 2> Crear redes                                      |\n"+
+                    "| 3> Regresar                                         |\n"+
+                    "+-----------------------------------------------------+\n")
+            opcion = int(input("[.] Ingrese una opción: "))
+            match opcion:
+                case 1:
+                    networkDao = NetworkDao(NEUTRON_BASE_URL , authToken)
+                    networkDao.listAllNetworks()
+                    break
+                case 2: 
+                    pass
+                case 3: 
+                    Route.return_main_menu(authToken)
+                case __: 
+                    pass
 
-        match opcion:
-            case 1:
-                networkDao = NetworkDao(NEUTRON_BASE_URL , self.authToken)
-                networkDao.listAllNetworks()
-            case 2: 
-                pass
-            case 3: 
-                pass
-            case __: 
-                pass
+
+        
