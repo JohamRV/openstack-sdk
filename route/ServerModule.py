@@ -8,20 +8,16 @@ class ServerModule:
 
     @staticmethod
     def menu(authToken):
-        print("\n+-----------------------------------------------------+\n"+
+        while True:
+            print("\n+-----------------------------------------------------+\n"+
                 "|                Módulo de VM                         |\n"+
                 "+-----------------------------------------------------+\n"+
                 "| 1> Listar vms                                       |\n"+
                 "| 2> Crear vms                                        |\n"+
                 "| 3> Regresar                                         |\n"+
                 "+-----------------------------------------------------+\n")
-        opcion = int(input("[.] Ingrese una opción: "))
+            opcion = int(input("[.] Ingrese una opción: "))
     
-    @staticmethod
-    def handleOption(authToken):
-        while True:
-            opcion = ServerModule.menu()
-
             match opcion:
                 case 1:
                     serverDao = ServerDao(NOVA_BASE_URL , authToken)
