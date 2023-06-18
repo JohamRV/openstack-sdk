@@ -1,18 +1,24 @@
 from fastapi import APIRouter
-
+from ...dao.glance.ImageDao import ImageDao
+import os
+'''
+GLANCE_URL = os.system("OS_GLANCE_URL")
 router = APIRouter()
+#imageDao = ImageDao(GLANCE_URL)
 
 @router.get("", tags=["users"])
-async def list_images():
+def list_images():
     pass
+    #imageDao.listImages()
 
 @router.get()
-async def show_image_detail():
+def show_image_detail():
     pass
 
-async def import_image():
+def import_image():
     pass
 
 @router.delete()
-async def delete_image():
+def delete_image():
     pass
+'''
