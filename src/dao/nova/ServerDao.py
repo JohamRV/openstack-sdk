@@ -6,7 +6,7 @@ class ServerDao:
     def __init__(self, base_url:str, token:str) -> None:
         self.url = base_url + "/v2.1/servers/"
         self.token = token
-
+  
     def createServer(self, image_id:str, flavor_id:str, ipv4:str, server_name:str, security_groups:list, networks:list, keypair_name:str):
         headers={"X-Auth-Token":self.token}
         body = {
