@@ -8,7 +8,7 @@ import dotenv
 #dotenv.load_dotenv("./env/.env")
 app = FastAPI()
 
-#app.include_router(ImageRouter.router)
+app.include_router(ImageRouter.router)
 app.include_router(AuthenticationRouter.router)
 #app.include_router(NetworkRouter.router)
 #app.include_router(SecurityGroupRouter.router)
