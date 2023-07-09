@@ -1,4 +1,5 @@
 import requests
+import json
 
 class NetworkDao:
 
@@ -17,8 +18,23 @@ class NetworkDao:
         response=requests.get(url=url, headers=headers)
         return response
     
-    def createNetwork():
-        pass
-
-    def deleteNetwork():
-        pass
+    def createNetworkProvider(self, name:str, network_type:str, segmentation_id:int, physical_network:str):
+        headers={"X-Auth-Token":self.token}
+        body = {
+            "network": {
+                "admin_state_up": True,
+                "provider:network_type": network_type,
+                "provider:segmentation_id": segmentation_id,
+                "name": name,
+                "provider:physical_network": physical_network,
+                "shared": True
+            }
+        }   
+        response = requests.post(url=self.url, data=json.dumps(body),headers=headers)
+        return response
+    
+    def deleteNetwork(self, network_id:str):
+        url = self.url +"/" + network_id
+        headers={"X-Auth-Token":self.token}
+        response=requests.delete(url=url, headers=headers)
+        return response
